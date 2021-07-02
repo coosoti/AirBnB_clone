@@ -7,8 +7,16 @@ from datetime import datetime
 from models import storage
 
 from models.base_model import BaseModel
+from models.user import User
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
-classes = {"BaseModel": BaseModel}
+
+classes = {"BaseModel": BaseModel, "User": User, "City": City, "Place": Place,
+           "Amenity": Amenity, "Review": Review}
+
 
 class HBNBCommand(cmd.Cmd):
     """ Prompt for HBNB console """
