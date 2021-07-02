@@ -12,10 +12,10 @@ from models.city import City
 from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
-
+from models.state import State
 
 classes = {"BaseModel": BaseModel, "User": User, "City": City, "Place": Place,
-           "Amenity": Amenity, "Review": Review}
+           "Amenity": Amenity, "Review": Review, "State": State}
 
 
 class HBNBCommand(cmd.Cmd):
