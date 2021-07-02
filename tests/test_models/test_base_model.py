@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ unittest for BaseModel class"""
-
+from time import sleep
 import pep8
 import unittest
 from models.base_model import BaseModel
@@ -34,8 +34,12 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         """Test public method save() for class BaseModel"""
-        self.base.save()
-        self.assertNotEqual(self.base.created_at, self.base.updated_at)
+        base1 = BaseModel()
+        initial_time = base1.updated_at
+        sleep(0.5)
+        base1.save()
+        updated_time = base1.updated_at
+        self.assertNotEqual(initial_time, updated_time)
 
     def test_to_dict(self):
         """Test that to_dict() creates a dictionary object of an instance"""
