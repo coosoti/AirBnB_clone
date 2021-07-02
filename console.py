@@ -127,7 +127,7 @@ class HBNBCommand(cmd.Cmd):
         args = shlex.split(arg)
         if len(args) == 0:
             print("** class name missing **")
-        if args[0] in classes:
+        elif args[0] in classes:
             if len(args) < 2:
                 print("** instance id missing **")
                 return
