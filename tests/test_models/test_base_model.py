@@ -11,11 +11,11 @@ class TestBaseModel(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """ set up base class"""
-        base = BaseModel()
+        cls.base = BaseModel()
 
     @classmethod
     def teardown(cls):
-        del base
+        del cls.base
 
     # test pep8 conformation
     def test_pep8_conformance_base_model(self):
@@ -31,3 +31,15 @@ class TestBaseModel(unittest.TestCase):
         result = style.check_files(['tests/test_models/test_base_model.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found errors or warnings")
+
+    def test_save(self):
+        """Test public method save() for class BaseModel"""
+        self.base.save()
+        self.assertNotEqual(self.base.created_at, self.base.updated_at)
+
+    def test_to_dict(self):
+        """Test that to_dict() creates a dictionary object of an instance"""
+        base_dict = self.base.to_dict()
+        self.assertEqual(self.base.__class__.__name__, 'BaseModel')
+        self.assertIsInstance(base_dict['created_at'], str)
+        self.assertIsInstance(base_dict['updated_at'], str)

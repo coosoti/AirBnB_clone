@@ -3,11 +3,9 @@
 module for testing console.py
 """
 
+import unittest
 import console
 from console import HBNBCommand
-import unittest
-import pep8
-import inspect
 
 
 class TestConsole(unittest.TestCase):
@@ -22,27 +20,17 @@ class TestConsole(unittest.TestCase):
         """tears down the class at the end of the test"""
         del cls.console
 
-    # testing for pep8 conformance
-    def test_pep8_conformance_console(self):
-        """ Test that console.py conforms to pep8 standard"""
-        style = pep8.StyleGuide(quiet=True)
-        result = style.check_files(['console.py'])
-        self.assertEqual(result.total_errors, 0,
-                         "Found conformance errors or warnings.")
-
-    def test_pep8_conformance_test_console(self):
-        """ Test that tests/test_console.py conforms to pep8 standard"""
-        style = pep8.StyleGuide(quiet=True)
-        result = style.check_files(['tests/test_console.py'])
-        self.assertEqual(result.total_errors, 0,
-                         "Found conformance errors or warnings.")
-
-    # testing for documentation
-    def test_module_and_class_and_functions_docstrings(self):
-        """ Test for docstrings for module, classes and functions"""
+    def test_module_class_methods_docstrings(self):
+        """Test that module, class and methods have docstrings"""
         self.assertIsNotNone(console.__doc__)
+        self.assertIsNotNone(HBNBCommand.emptyline.__doc__)
         self.assertIsNotNone(HBNBCommand.do_quit.__doc__)
         self.assertIsNotNone(HBNBCommand.do_EOF.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_create.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_show.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_destroy.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_all.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_update.__doc__)
 
 if __name__ == "__main__":
     unittest.main()
