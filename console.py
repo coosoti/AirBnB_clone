@@ -25,11 +25,13 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """ exits the console """
         # equivalent to CTRL-D
+        quit()
         return True
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
         # quit
+        quit()
         return True
 
     def emptyline(self):
